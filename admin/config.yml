@@ -1,0 +1,36 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "news"
+    label: "أخبار النادي"
+    folder: "news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "العنوان", name: "title", widget: "string"}
+      - {label: "تاريخ النشر", name: "date", widget: "datetime"}
+      - {label: "صورة الخبر", name: "image", widget: "image"}
+      - {label: "المحتوى", name: "body", widget: "markdown"}
+
+  - name: "members"
+    label: "قائمة الأسماء"
+    folder: "members"
+    create: true
+    fields:
+      - {label: "الاسم الكامل", name: "name", widget: "string"}
+      - {label: "المنصب", name: "role", widget: "string"}
+      - {label: "صورة العضو", name: "photo", widget: "image"}
+        - name: "developer_info"
+    label: "معلومات المطور"
+    files:
+      - file: "developer.json"
+        label: "اسم المطور"
+        name: "dev"
+        fields:
+          - {label: "اسم المطور", name: "developer", widget: "string", default: "othmane bendriss"}
+          
